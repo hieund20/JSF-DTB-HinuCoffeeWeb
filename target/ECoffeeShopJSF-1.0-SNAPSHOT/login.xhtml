@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Đăng nhập</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/base.xhtml">
+            <ui:define name="header">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="mb-5 pt-5"></div>
+                <h1 class="text-center mt-5">#{pText['login.title']}</h1>
+                <f:metadata>
+                    <f:viewAction action="#{userBean.checkLogin()}"></f:viewAction>
+                </f:metadata>
+                <h:form>
+                    <div class="container mt-5">
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label"
+                                           value="#{pText['login.username']}">
+                            </h:outputLabel>
+                            <h:inputText class="form-control"
+                                         id="txtUserName"
+                                         value="#{userBean.username}">
+                            </h:inputText>
+                        </div>
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label"
+                                           value="#{pText['login.password']}">
+                            </h:outputLabel>
+                            <h:inputSecret class="form-control"
+                                           id="txtPassword"
+                                           value="#{userBean.password}">
+                            </h:inputSecret>
+                        </div>
+                        <div class="mb-3">
+                            <h:commandButton styleClass="btn btn-dark"
+                                             value="#{pText['login.login']}"
+                                             action="#{userBean.login()}">
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+                <div class="container">
+                    <h:messages id="handleMessage"
+                                style="color: red;">
+                    </h:messages>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

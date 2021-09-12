@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Trang Chủ</title>
+        <!--Add CSS-->
+        <h:outputStylesheet name="css/bootstrap.min.css" library="bootstrap"></h:outputStylesheet>
+        <h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+        <!--Add JS-->
+        <h:outputScript name="js/bootstrap.min.js" library="bootstrap"></h:outputScript>
+        <h:outputScript name="jquery-3.6.0.min.js" library="js"></h:outputScript>
+        <h:outputScript name="script.js" library="js"></h:outputScript>
+        
+        <!--Biến được khai báo toàn cục lấy text trong file foods (Properties) -->
+        <f:loadBundle var="pText" basename="properties/text"></f:loadBundle>
+    </h:head>
+    <h:body>
+        <!-- Gắn các phần nhỏ vào trang web-->
+        <ui:insert name="menu">
+            <ui:include src="menu.xhtml"></ui:include>
+        </ui:insert>
+        <ui:insert name="header">
+            <ui:include src="header.xhtml"></ui:include>
+        </ui:insert>
+        <ui:insert name="content">
+            <ui:include src="content.xhtml"></ui:include>
+        </ui:insert>
+        <ui:insert name="contact">
+            <ui:include src="contact.xhtml"></ui:include>
+        </ui:insert>
+        <ui:insert name="footer">
+            <ui:include src="footer.xhtml"></ui:include>
+        </ui:insert>
+    </h:body>
+</html>
+

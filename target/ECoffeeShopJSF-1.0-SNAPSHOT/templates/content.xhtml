@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <div class="container" id="card-container">
+        <c:choose>
+            <!-- Chỉ khi là ADMIN thì mới hiển thị thanh quản lý-->
+            <c:when test="#{not empty user and user.uRole eq 'ADMIN'}">
+                <div class="container d-flex" id="management-container">
+                    <div class="block">
+                        <h:link outcome="foods-management?faces-redirect=true">#{pText['content.foods_management']}</h:link>
+                    </div>
+                    <div class="block">
+                        <h:link outcome="menus-management?faces-redirect=true">#{pText['content.menus_management']}</h:link>
+                    </div>
+                    <div class="block">
+                        <h:link outcome="suppliers-management?faces-redirect=true">#{pText['content.suppliers_management']}</h:link>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
+ 
+        <h3 class="text-center">#{pText['content.coffee']}</h3>
+        <div class="container d-flex" id="content-container">
+            <c:forEach var="food" items="#{foodBean.foods}">
+                <div class="card">
+                    <a href="#" target="_blank">
+                        <div class="img-zoom">
+                            <h:graphicImage library="images"
+                                            name="#{food.image}"
+                                            styleClass="img-fluid"
+                                            class="card-img-top"
+                                            alt="food"></h:graphicImage>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">#{food.name}</h5>
+                            <p class="card-text">#{food.price}đ</p>
+                            <h:form>
+                                <h:commandButton styleClass="btn btn-dark"
+                                             value="#{pText['content.buy']}">
+                                <f:ajax listener="#{cartBean.addItemToCart(food.id, food.name, food.price)}"></f:ajax>
+                            </h:commandButton>
+                            <h:commandLink styleClass="btn btn-light"
+                                           value="#{pText['content.detail']}">
+                                               
+                            </h:commandLink>
+                            </h:form>
+                        </div>
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</ui:composition>
+
+
