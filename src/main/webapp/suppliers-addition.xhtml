@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/base.xhtml">
+            <ui:define name="header">
+                <!-- Header được define lại từ base và không hiển thị gì cả-->
+            </ui:define>
+            
+            <ui:define name="content">
+                <div class="container mt-5 pt-5">
+                    <h1 class="text-center mb-4">#{pText['supplier.add_title']}</h1>
+                    <h:form enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label" 
+                                           value="#{pText['supplier.name']}">                                              
+                            </h:outputLabel>
+                            <h:inputText class="form-control"
+                                         id="txtSupplierName"
+                                         value="#{supplierBean.name}">
+                            </h:inputText>
+                        </div>
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label" 
+                                           value="#{pText['supplier.country']}">                                              
+                            </h:outputLabel>
+                            <h:inputText class="form-control"
+                                         id="txtSupplierCountry"
+                                         value="#{supplierBean.country}">
+                            </h:inputText>
+                        </div>
+                        <div class="mb-3">
+                            <h:inputHidden value="#{supplierBean.id}"></h:inputHidden>
+                            <h:commandButton styleClass="btn btn-dark"
+                                             value="#{pText['supplier.add_supplier']}"
+                                             action="#{supplierBean.addOrUpadateSupplier()}">
+                            </h:commandButton>
+                        </div>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

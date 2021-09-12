@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link active"
+                                value="#{pText['menu.home']}"
+                                outcome="index?faces-redirect=true">
+                        </h:link>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            #{pText['menu.menu']}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:forEach var="menu" items="#{menuBean.menus}">
+                                <li><a class="dropdown-item" href="index?menu_id=#{menu.id}">#{menu.name}</a></li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">#{pText['menu.aboutus']}</a>
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link"
+                                value="#{pText['menu.cart']}"
+                                outcome="cart-payment?faces-redirect=true">
+                        </h:link>
+                    </li>
+                    <li class="nav-item" id="vertical-line">
+                        <a class="nav-link" href="#">  </a>
+                    </li>
+                    <!-- Trường hợp đã đăng nhập (đã tồn tại user) thì hiển thị-->
+                    <c:if test="#{facesContext.externalContext.sessionMap.get('user') != null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" 
+                               href="#" 
+                               id="navbarDropdown" 
+                               role="button"
+                               data-bs-toggle="dropdown" 
+                               aria-expanded="false">#{facesContext.externalContext.sessionMap.get("user").username}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <h:form>
+                                    <h:link styleClass="nav-link">#{pText['menu.infor']}</h:link>
+                                    <h:commandLink styleClass="nav-link" 
+                                                   action="#{userBean.logOut()}">#{pText['menu.logout']}
+                                    </h:commandLink>
+                                </h:form>
+                            </ul>
+                        </li>
+                    </c:if>
+                    <!-- Trường hợp chưa đăng nhập (chưa tồn tại user) thì hiển thị-->
+                    <c:if test="#{facesContext.externalContext.sessionMap.get('user') == null}">
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link"
+                                    outcome="login?faces-redirect=true"
+                                    value="#{pText['menu.login']}">
+                            </h:link>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link"
+                                    outcome="register?faces-redirect=true"
+                                    value="#{pText['menu.register']}">
+                            </h:link>
+                        </li>
+                    </c:if>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</ui:composition>
+
+
+

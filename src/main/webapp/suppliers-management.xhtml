@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/base.xhtml">
+            <ui:define name="header">
+                <!-- Header được define lại từ base và không hiển thị gì cả -->
+            </ui:define>
+            
+            <ui:define name="content">
+                <div class="container mt-5 pt-5">
+                    <h1 class="text-center mb-4">#{pText['supplier.title']}</h1>
+                    <h:dataTable var="supplier" value="#{supplierBean.suppliers}" styleClass="table">
+                        <h:column>
+                            <f:facet name="header">#{pText['supplier.id']}</f:facet>
+                                #{supplier.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">#{pText['supplier.name']}</f:facet>
+                                #{supplier.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">#{pText['supplier.country']}</f:facet>
+                                #{supplier.country}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+                            <h:form>
+                                <h:link value="#{pText['food.upadate']}" 
+                                        outcome="suppliers-addition?faces-redirect=true">
+                                    <f:param name="supplier_id" value="#{supplier.id}"></f:param>
+                                </h:link>
+                                |
+                                <h:commandLink value="#{pText['food.delete']}">
+                                    <f:ajax listener="#{supplierBean.deleteSupplier(supplier)}"
+                                            render="@all"
+                                            onerror="deleteFailure">
+                                    </f:ajax>
+                                </h:commandLink>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+                    <!--Nút thêm loại thực phẩm, chuyển đến menus-addition.xhtml-->
+                    <h:link styleClass="btn btn-dark" 
+                            outcome="suppliers-addition?faces-redirect=true"
+                            value="#{pText['supplier.add']}">
+                    </h:link>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

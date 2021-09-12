@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Đăng ký</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/base.xhtml">
+            <ui:define name="header">
+                <!-- Header được ghi đè từ base và không hiển thị gì cả-->
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="mb-5 pt-5"></div>
+                <h1 class="text-center mt-5">#{pText['register.title']}</h1>
+                <h:messages></h:messages>
+                <h:form>
+                    <div class="container">
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label"
+                                           value="#{pText['register.name']}">
+                            </h:outputLabel>
+                            <h:inputText class="form-control"
+                                         id="txtName"
+                                         value="#{userBean.name}">
+                            </h:inputText>
+                        </div>
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label"
+                                           value="#{pText['register.email']}">
+                            </h:outputLabel>
+                            <h:inputText class="form-control"
+                                         id="txtEmail"
+                                         value="#{userBean.email}">
+                            </h:inputText>
+                        </div>
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label"
+                                           value="#{pText['register.username']}">
+                            </h:outputLabel>
+                            <h:inputText class="form-control"
+                                         id="txtUserName"
+                                         value="#{userBean.username}">
+                            </h:inputText>
+                        </div>
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label"
+                                           value="#{pText['register.password']}">
+                            </h:outputLabel>
+                            <h:inputSecret class="form-control"
+                                           id="txtPassword"
+                                           value="#{userBean.password}">
+                            </h:inputSecret>
+                        </div>
+                        <div class="mb-3">
+                            <h:outputLabel class="form-label"
+                                           value="#{pText['register.confirm_password']}">
+                            </h:outputLabel>
+                            <h:inputSecret class="form-control"
+                                           id="txtConfirmPassword"
+                                           value="#{userBean.confirmPassword}">
+                            </h:inputSecret>
+                        </div>
+                        <div class="mb-3">
+                            <h:commandButton styleClass="btn btn-dark"
+                                             value="#{pText['register.register']}"
+                                             action="#{userBean.register()}">
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

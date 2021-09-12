@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Admin | Quản lý loại thực phẩm</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/base.xhtml">
+            <ui:define name="header">
+                <!-- Phần header được define lại từ base và không hiển thị gì cả-->
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="container mt-5 pt-5">
+                    <h1 class="text-center mb-4">#{pText['menu.title']}</h1>
+                    <h:dataTable var="menu" value="#{menuBean.menus}" styleClass="table">
+                        <h:column>
+                            <f:facet name="header">#{pText['menu.id']}</f:facet>
+                                #{menu.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">#{pText['menu.name']}</f:facet>
+                                #{menu.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+                            <h:form>
+                                <h:link value="#{pText['food.upadate']}" 
+                                        outcome="menus-addition?faces-redirect=true">
+                                    <f:param name="menu_id" value="#{menu.id}"></f:param>
+                                </h:link>
+                                |
+                                <h:commandLink value="#{pText['food.delete']}">
+                                    <f:ajax listener="#{menuBean.deleteMenus(menu)}"
+                                            render="@all"
+                                            onerror="deleteFailure">
+                                    </f:ajax>
+                                </h:commandLink>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+                    <!--Nút thêm loại thực phẩm, chuyển đến menus-addition.xhtml-->
+                    <h:link styleClass="btn btn-dark" 
+                            outcome="menus-addition?faces-redirect=true"
+                            value="#{pText['menu.add']}">
+                    </h:link>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

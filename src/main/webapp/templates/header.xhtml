@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <h:graphicImage library="images"
+                                name="carosels/carosel1.jpg"
+                                styleClass="img-fluid"
+                                class="d-block w-100"
+                                alt="carosel"></h:graphicImage>
+                <div class="carousel-caption">
+                    <h:graphicImage library="images" 
+                                    name="logo-light.png" 
+                                    styleClass="img-fluid"
+                                    class="w-25 mb-2"
+                                    alt="logo"></h:graphicImage>
+                    <h1>#{pText['header.carosel_title']}</h1>
+                    <p>#{pText['contact.quotes']}</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <h:graphicImage library="images"
+                                name="carosels/carosel2.jpg"
+                                styleClass="img-fluid"
+                                class="d-block w-100"
+                                alt="carosel"></h:graphicImage>
+                <div class="carousel-caption">
+                    <h:graphicImage library="images"
+                                    name="logo-light.png"
+                                    styleClass="img-fluid"
+                                    class="w-25 mb-2"
+                                    alt="logo"></h:graphicImage>
+                    <h1>#{pText['header.carosel_title']}</h1>
+                    <p>#{pText['contact.quotes']}</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <h:graphicImage library="images"
+                                name="carosels/carosel3.jpg"
+                                styleClass="img-fluid"
+                                class="d-block w-100"
+                                alt="carosel"></h:graphicImage>
+                <div class="carousel-caption">
+                    <h:graphicImage library="images"
+                                    name="logo-light.png"
+                                    styleClass="img-fluid"
+                                    class="w-25 mb-2"
+                                    alt="logo"></h:graphicImage>
+                    <h1>#{pText['header.carosel_title']}</h1>
+                    <p>#{pText['contact.quotes']}</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container" id="card-container">
+        <h3 class="text-center">#{pText['header.stores']}</h3>
+        <div class="container d-flex" id="header-container">
+            <div class="card" id="col1">
+                <a href="#">
+                    <h:graphicImage library="images"
+                                    name="stores/store1.jpeg"
+                                    styleClass="img-fluid"
+                                    class="card-img-top custom"
+                                    alt="store"></h:graphicImage>
+                    <div class="card-body">
+                        <h5 class="card-title">#{pText['header.store1']}</h5>
+                        <p class="card-text">#{pText['header.store1_address']}</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card" id="col2">
+                <a href="#">
+                    <h:graphicImage library="images"
+                                    name="stores/store2.jpeg"
+                                    styleClass="img-fluid"
+                                    class="card-img-top custom"
+                                    alt="store"></h:graphicImage>
+                    <div class="card-body">
+                        <h5 class="card-title">#{pText['header.store2']}</h5>
+                        <p class="card-text">#{pText['header.store2_address']}</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card" id="col3">
+                <a href="#">
+                    <h:graphicImage library="images"
+                                    name="stores/store3.jpeg"
+                                    styleClass="img-fluid"
+                                    class="card-img-top custom"
+                                    alt="store"></h:graphicImage>
+                    <div class="card-body">
+                        <h5 class="card-title">#{pText['header.store3']}</h5>
+                        <p class="card-text">#{pText['header.store3_address']}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</ui:composition>
+
+

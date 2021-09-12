@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <div class="contact">
+        <div class="container">
+            <div class="container w-25">
+                <h:graphicImage library="images"
+                                name="logo-light.png"
+                                styleClass="img-fluid"
+                                class="mt-5"></h:graphicImage>
+            </div>
+            <p class="text-center text-white mt-3">#{pText['contact.quotes']}</p>
+            <div class="text-center text-white mt-5" id="contact-info-top">
+                <h5>#{pText['contact.stores']}</h5>
+                <p>#{pText['contact.store_address']}</p>
+                <p>#{pText['contact.store_address']}</p>
+            </div>
+            <div class="container w-50">
+                <h5 class="text-center text-white mt-5">#{pText['contact.recieve_news']}</h5>
+                <div class="input-group mb-3">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="#{pText['contact.email']}"
+                           aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">#{pText['contact.email_format']}</span></input>
+                </div>
+                <button class="btn btn-outline-dark w-100 mb-5">#{pText['contact.subcribe']}</button>
+            </div>
+        </div>
+    </div>
+</ui:composition>
+
